@@ -23,7 +23,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 export function MonthlyChart({ data }) {
   if (!data || data.length === 0) {
     return (
-      <div className="glass-card rounded-2xl p-5 lg:p-6">
+      <div className="glass-card rounded-2xl p-5 lg:p-6 h-full min-h-[300px]">
         <h3 className="text-lg font-semibold text-white mb-4">Monthly Spending</h3>
         <div className="h-64 flex items-center justify-center text-gray-500">
           <p>No spending data available yet</p>
@@ -33,10 +33,10 @@ export function MonthlyChart({ data }) {
   }
 
   return (
-    <div className="glass-card rounded-2xl p-5 lg:p-6">
+    <div className="glass-card rounded-2xl p-5 lg:p-6 h-full min-h-[300px]">
       <h3 className="text-lg font-semibold text-white mb-1">Monthly Spending</h3>
       <p className="text-sm text-gray-500 mb-4">Last {data.length} months overview</p>
-      <div className="h-64 lg:h-72">
+      <div className="h-64 lg:h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 5, right: 5, left: -15, bottom: 0 }}>
             <defs>
@@ -79,7 +79,7 @@ export function MonthlyChart({ data }) {
 export function CategoryChart({ data }) {
   if (!data || data.length === 0) {
     return (
-      <div className="glass-card rounded-2xl p-5 lg:p-6">
+      <div className="glass-card rounded-2xl p-5 lg:p-6 h-full min-h-[300px]">
         <h3 className="text-lg font-semibold text-white mb-4">By Category</h3>
         <div className="h-64 flex items-center justify-center text-gray-500">
           <p>No category data available yet</p>
@@ -91,21 +91,21 @@ export function CategoryChart({ data }) {
   const total = data.reduce((sum, d) => sum + d.value, 0);
 
   return (
-    <div className="glass-card rounded-2xl p-5 lg:p-6">
+    <div className="glass-card rounded-2xl p-5 lg:p-6 h-full min-h-[300px]">
       <h3 className="text-lg font-semibold text-white mb-1">By Category</h3>
       <p className="text-sm text-gray-500 mb-4">Spending distribution</p>
 
-      <div className="flex flex-col lg:flex-row items-center gap-4">
+      <div className="flex flex-col lg:flex-row items-center gap-4 h-[calc(100%-60px)]">
         {/* Pie Chart */}
-        <div className="w-full lg:w-1/2 h-48 lg:h-56">
+        <div className="w-full lg:w-1/2 h-64 lg:h-full min-h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={50}
-                outerRadius={75}
+                innerRadius={60}
+                outerRadius={80}
                 paddingAngle={3}
                 dataKey="value"
                 stroke="rgba(10, 10, 15, 0.5)"
@@ -162,7 +162,7 @@ export function CategoryChart({ data }) {
 export function DailyChart({ data }) {
   if (!data || data.length === 0) {
     return (
-      <div className="glass-card rounded-2xl p-5 lg:p-6">
+      <div className="glass-card rounded-2xl p-5 lg:p-6 h-full min-h-[300px]">
         <h3 className="text-lg font-semibold text-white mb-4">Daily Spending</h3>
         <div className="h-48 flex items-center justify-center text-gray-500">
           <p>No daily data available</p>
@@ -172,10 +172,10 @@ export function DailyChart({ data }) {
   }
 
   return (
-    <div className="glass-card rounded-2xl p-5 lg:p-6">
+    <div className="glass-card rounded-2xl p-5 lg:p-6 h-full min-h-[300px]">
       <h3 className="text-lg font-semibold text-white mb-1">Daily Spending</h3>
       <p className="text-sm text-gray-500 mb-4">This month&apos;s daily breakdown</p>
-      <div className="h-48 lg:h-56">
+      <div className="h-48 lg:h-56 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 5, right: 5, left: -15, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(45, 45, 80, 0.3)" />
