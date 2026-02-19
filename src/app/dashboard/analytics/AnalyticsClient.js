@@ -2,7 +2,7 @@
 
 import Sidebar from '../components/Sidebar';
 import { MonthlyChart, CategoryChart, DailyChart } from '../components/Charts';
-import { CATEGORIES } from '../../../lib/actions';
+import { CATEGORIES } from '../../../lib/constants';
 import { format } from 'date-fns';
 
 export default function AnalyticsClient({ user, categoryData, monthlyData, dailyData, topExpenses, totalThisMonth, monthlyBudget }) {

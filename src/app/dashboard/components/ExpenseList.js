@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import { deleteExpense, CATEGORIES } from '../../../lib/actions';
+import { deleteExpense } from '../../../lib/actions';
+import { CATEGORIES } from '../../../lib/constants';
 import { HiOutlineTrash, HiOutlinePencil, HiOutlineDotsVertical, HiOutlineSearch, HiOutlineFilter } from 'react-icons/hi';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';

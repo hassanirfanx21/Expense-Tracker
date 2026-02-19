@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import { addExpense, updateExpense, CATEGORIES } from '../../../lib/actions';
+import { addExpense, updateExpense } from '../../../lib/actions';
+import { CATEGORIES } from '../../../lib/constants';
 import { HiOutlineX } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 
