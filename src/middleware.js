@@ -40,18 +40,24 @@ export async function middleware(request) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
+  // Helper to construct absolute URL using NEXT_PUBLIC_APP_URL if set (for Replit)
+  const getRedirectUrl = (path) => {
+     if (process.env.NEXT_PUBLIC_APP_URL) {
+       return new URL(path, process.env.NEXT_PUBLIC_APP_URL);
+     }
+     const url = request.nextUrl.clone();
+     url.pathname = path;
+     return url;
+  };
+
   // Protected routes
   if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = '/login';
-    return NextResponse.redirect(redirectUrl);
+    return NextResponse.redirect(getRedirectUrl('/login'));
   }
 
   // Redirect logged-in users away from login
   if (user && request.nextUrl.pathname === '/login') {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = '/dashboard';
-    return NextResponse.redirect(redirectUrl);
+    return NextResponse.redirect(getRedirectUrl('/dashboard'));
   }
 
   return response;

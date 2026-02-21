@@ -12,10 +12,13 @@ export default function LoginPage() {
 
   const handleOAuthLogin = async (provider) => {
     setLoading(true);
+    // Use NEXT_PUBLIC_APP_URL if available, otherwise fallback to window.location.origin
+    const origin = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+    
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${origin}/auth/callback`,
       },
     });
     if (error) {
